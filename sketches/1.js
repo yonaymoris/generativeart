@@ -1,8 +1,4 @@
 const canvasSketch = require('canvas-sketch');
-const { polylinesToSVG } = require('canvas-sketch-util/penplot');
-
-// function to generate a random number between min and max
-const random = (min, max) => Math.random() * (max - min) + min;
 
 // Specify some output parameters
 const settings = {
@@ -26,11 +22,8 @@ const sketch = () => {
     // Now draw a white rectangle in the center
     context.lineWidth = 1;
     for (let w = marginLeft + (squareWidth / 2); w <= width - marginLeft - (squareWidth / 2); w += 55) {
-      let h = marginTop;
-      while ( h <= height - marginTop - (squareWidth / 2)) {
-        let distance = random(0, 50);
+      for (let h = marginTop + (squareWidth / 2); h <= height - marginTop - (squareWidth / 2); h += 55) {
         context.strokeRect(w, h, squareWidth, squareWidth);
-        h += 10 + distance;
       }
     }
   };
